@@ -3,7 +3,10 @@
         <el-form-item label="商户名称" prop="busName">
             <el-input v-model="ruleForm.busName"></el-input>
         </el-form-item>
-        <el-form-item label="商户图像" prop="busImg">
+        <el-form-item label="商户描述" prop="busDesc">
+            <el-input v-model="ruleForm.busName"></el-input>
+        </el-form-item>
+        <el-form-item label="商户图片" prop="busImg">
             <el-upload
               class="avatar-uploader"
               action="https://jsonplaceholder.typicode.com/posts/"
@@ -14,7 +17,7 @@
               <i v-else class="el-icon-plus avatar-uploader-icon"></i>
             </el-upload>
         </el-form-item>
-        <el-form-item label="商户详情"> 
+        <el-form-item label="工作详情"> 
           <quill-editor 
             v-model="content"
             ref="myQuillEditor"
@@ -88,8 +91,12 @@ import { quillEditor } from 'vue-quill-editor'
           theme: 'snow'
         },
         ruleForm: {
+          // 商户名称
           busName: '',
-          busImg: ''
+          // 商户图片
+          busImg: '',
+          // 商户描述
+          busDesc: ''
         },
         rules: {
           busName: [
@@ -97,7 +104,7 @@ import { quillEditor } from 'vue-quill-editor'
             // { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
           ],
           busImg: [
-            { required: true, message: '请上传图像' },
+            { required: true, message: '请上传商户图片' },
           ]
         }
       };
@@ -107,17 +114,16 @@ import { quillEditor } from 'vue-quill-editor'
     },
     methods: {
       handleAvatarSuccess(res, file) {
-        this.imageUrl = URL.createObjectURL(file.raw);
+        this.busImg = URL.createObjectURL(file.raw);
       },
       beforeAvatarUpload(file) {
         const isJPG = file.type === 'image/jpeg';
         const isLt2M = file.size / 1024 / 1024 < 2;
-
         if (!isJPG) {
-          this.$message.error('上传头像图片只能是 JPG 格式!');
+          this.$message.error('上传图片只能是 JPG 格式!');
         }
         if (!isLt2M) {
-          this.$message.error('上传头像图片大小不能超过 2MB!');
+          this.$message.error('上传图片大小不能超过 2MB!');
         }
         return isJPG && isLt2M;
       },

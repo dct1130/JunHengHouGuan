@@ -10,6 +10,10 @@
                     <i class="el-icon-menu"></i>
                     <span>商户管理</span>
                 </el-menu-item>  
+                <el-menu-item index="/order">
+                    <i class="el-icon-goods"></i>
+                    <span>订单管理</span>
+                </el-menu-item>  
                 <el-menu-item index="/user">
                     <i class="el-icon-setting"></i>
                     <span>用户管理</span>

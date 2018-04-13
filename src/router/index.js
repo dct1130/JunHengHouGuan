@@ -5,6 +5,7 @@ Vue.use(Router)
 import IndexAd from '@/page/indexAd'
 import Business from '@/page/business'
 import UserManage from '@/page/userManage'
+import OrderManage from '@/page/orderManage'
 export default new Router({
   mode: 'history',
   routes: [
@@ -23,6 +24,11 @@ export default new Router({
       path: '/user',
       name: 'UserManage',
       component: UserManage
+    },
+    {
+      path: '/order',
+      name: 'OrderManage',
+      component: OrderManage
     }
   ]
 })
